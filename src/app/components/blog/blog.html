@@ -1,0 +1,68 @@
+<div class="container mt-3">
+
+<div class="row g-4 align-items-start">
+    <section class="containerFormulario col-12 col-lg-6">
+                <h1 >Formulario</h1><hr>
+    
+                <div class = "mb-3">
+                    <label class="form-label" for="Titulo">Titulo: </label>
+                    <input class= "form-control" type= "text" name= "Titulo" id= "Titulo" placeholder="Introduce el Titulo" [(ngModel)]="newNoticia.Titulo">
+                </div>
+                <div class = "inputgroup mb-3">
+                    <label class="form-label" for="Imagen">Imagen: </label>
+                    <input class= "form-control" type= "text" name= "Imagen" id= "Imagen" placeholder="Introduce el Imagen" [(ngModel)]="newNoticia.Imagen">
+                </div>
+
+                <div class = "inputgroup mb-3">
+                    <label class="form-label" for="Cuerpo">Cuerpo: </label>
+                    <input class= "form-control " type= "text" name= "Cuerpo" id= "Cuerpo" placeholder="Introduce el Cuerpo" [(ngModel)]="newNoticia.Cuerpo">
+                </div>
+
+                <div class = "inputgroup mb-3">
+                    <label class="form-label" for="Fecha">Fecha: </label>
+                    <input class= "form-control" type= "text" name= "Fecha" id= "Fecha" placeholder="Introduce el Fecha" [(ngModel)]="newNoticia.Fecha">
+                </div>
+
+
+                @if (mensajeError !== '') {
+                    <p class="text-danger fw-bold">{{ mensajeError }}</p>
+                }
+
+                <div class="d-flex">
+                    <button class="btn btn-primary" (click)="guardarDatos()">Guardar</button>
+                </div>
+    </section>
+
+
+
+<section class="containerNoticias col-12 col-lg-6">
+    <h1 class="text-center">Noticias</h1><hr>
+    <div class="row">
+
+        @for (noticia of Noticias; track $index) {
+
+            <div class="col-12 mb-4">
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2>{{ noticia.Titulo }}</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <img [src]="noticia.Imagen" class="img-fluid w-100 mb-3" alt="Imagen de la noticia">
+                        <p>{{ noticia.Cuerpo }}</p>
+                        <p class="mb-0">{{ noticia.Fecha }}</p>
+                    </div>
+                </div>
+            </div>
+
+        } @empty {
+            <p>No hay noticias que mostrar</p>
+        }
+    </div>
+</section>
+
+</div>
+</div>
+
+
